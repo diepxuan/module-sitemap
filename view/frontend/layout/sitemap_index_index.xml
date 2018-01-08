@@ -6,5 +6,23 @@
         <referenceContainer name="content">
             <block class="Diepxuan\Sitemap\Block\Sitemap" template="sitemap.phtml"/>
         </referenceContainer>
+        <!-- breadcrumbs -->
+        <referenceBlock name="breadcrumbs">
+            <action method="addCrumb">
+                <argument name="crumbName" xsi:type="string">Home</argument>
+                <argument name="crumbInfo" xsi:type="array">
+                    <item name="title" xsi:type="string">Home</item>
+                    <item name="label" xsi:type="string">Home</item>
+                    <item name="link" xsi:type="string">/</item>
+                </argument>
+            </action>
+            <action method="addCrumb">
+                <argument name="crumbName" xsi:type="string" translate="true">Sitemap</argument>
+                <argument name="crumbInfo" xsi:type="array">
+                    <item name="title" xsi:type="string" translate="true">Sitemap</item>
+                    <item name="label" xsi:type="string" translate="true">Sitemap</item>
+                </argument>
+            </action>
+        </referenceBlock>
     </body>
 </page>
