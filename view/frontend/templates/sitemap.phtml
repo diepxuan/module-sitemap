@@ -1,1 +1,28 @@
-<h1>Sitemap</h1>
+<?php
+$categories     = $this->getStoreCategories();
+$categoryHelper = $this->getCategoryHelper();
+?>
+<div class="sitemap-container col-xs-12">
+    <ul class="sitemap-items">
+        <?php foreach ($categories as $index => $category) : ?>
+            <li class="sitemap-item level-<?= $category->getLevel() ?>">
+                <a href="<?= $category->getUrl(); ?>">
+                    <span><?= $category->getName() ?></span>
+                </a>
+                <?php if ($childrenCategories = $this->getChildCategories($category)) : ?>
+                    <ul>
+                        <?php foreach ($childrenCategories as $childrenCategory) : ?>
+                            <li class="sitemap-item level-<?= $childrenCategory->getLevel() ?>">
+                                <a href="<?= $childrenCategory->getUrl(); ?>">
+                                    <span><?= $childrenCategory->getName() ?></span>
+                                </a>
+                            </li>
+                            <!--                        <pre>--><? //= print_r(get_class_methods($childrenCategory), true);
+                            ?><!--</pre>-->
+                        <?php endforeach ?>
+                    </ul>
+                <?php endif ?>
+            </li>
+        <?php endforeach ?>
+    </ul>
+</div>

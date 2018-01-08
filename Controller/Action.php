@@ -2,23 +2,29 @@
 
 namespace Diepxuan\Sitemap\Controller;
 
+/**
+ * Class Action
+ * @package Diepxuan\Sitemap\Controller
+ */
 abstract class Action extends \Magento\Framework\App\Action\Action
 {
 
-    protected $resultPage = null;
+    /**
+     * @var \Magento\Framework\View\Result\PageFactory
+     */
+    protected $pageFactory;
 
-    /*
-     * Constructor
+    /**
+     * Action constructor.
      *
-     * @param Context $context
-     * @param PageFactory $resultPageFactory
+     * @param \Magento\Framework\App\Action\Context      $context
+     * @param \Magento\Framework\View\Result\PageFactory $pageFactory
      */
     public function __construct(
         \Magento\Framework\App\Action\Context $context,
-        \Magento\Framework\View\Result\PageFactory $resultPage
+        \Magento\Framework\View\Result\PageFactory $pageFactory
     ) {
-        $this->resultPage = $resultPage;
-
+        $this->pageFactory = $pageFactory;
         parent::__construct($context);
     }
 }
