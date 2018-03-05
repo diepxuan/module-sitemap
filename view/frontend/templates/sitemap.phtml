@@ -6,15 +6,15 @@ $categoryHelper = $this->getCategoryHelper();
     <ul class="sitemap-items">
         <?php foreach ($categories as $index => $category) : ?>
             <li class="sitemap-item level-<?= $category->getLevel() ?>">
-                <a href="<?= $category->getUrl(); ?>">
+                <a href="<?= $categoryHelper->getCategoryUrl($category); ?>">
                     <span><?= $category->getName() ?></span>
                 </a>
                 <?php if ($childrenCategories = $this->getChildCategories($category)) : ?>
                     <ul>
-                        <?php foreach ($childrenCategories as $childrenCategory) : ?>
-                            <li class="sitemap-item level-<?= $childrenCategory->getLevel() ?>">
-                                <a href="<?= $childrenCategory->getUrl(); ?>">
-                                    <span><?= $childrenCategory->getName() ?></span>
+                        <?php foreach ($childrenCategories as $childCategory) : ?>
+                            <li class="sitemap-item level-<?= $childCategory->getLevel() ?>">
+                                <a href="<?= $categoryHelper->getCategoryUrl($childCategory); ?>">
+                                    <span><?= $childCategory->getName() ?></span>
                                 </a>
                             </li>
                             <!--                        <pre>--><? //= print_r(get_class_methods($childrenCategory), true);
